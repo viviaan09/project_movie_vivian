@@ -18,7 +18,8 @@ class _HomeScreenState extends State<HomeScreen> {
   List<Movie> _popularMovies = [];
 
   @override
-  initState() {
+  void initState() {
+    // TODO: implement initState
     super.initState();
     _loadMovies();
   }
@@ -43,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Pilem')),
+      appBar: AppBar(title: const Text('Film')),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,11 +79,14 @@ class _HomeScreenState extends State<HomeScreen> {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
-                  onTap: () => {
+                  onTap: () {
+                    // Handle movie tap, e.g., navigate to details page
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DetailScreen()),
-                    ),
+                      MaterialPageRoute(
+                        builder: (context) => DetailScreen(movie: movie),
+                      ),
+                    );
                   },
                   child: Column(
                     children: [
